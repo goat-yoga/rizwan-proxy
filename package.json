@@ -1,15 +1,30 @@
 {
-  "name": "",
+  "name": "proxy_server",
   "version": "",
   "description": "",
-  "author": "",
+  "author": "Rizwan Choudhury",
   "license": "",
   "engines": {
     "node": ">=6.13.0"
   },
   "scripts": {
+    "start": "nodemon server/index.js",
+    "build": "webpack -d -w"
   },
   "dependencies": {
+    "http-proxy": "^1.18.1",
+    "aws-sdk": "^2.708.0",
+    "axios": "^0.19.2",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "faker": "^4.1.0",
+    "mongodb": "^3.5.9",
+    "mongoose": "^5.9.19",
+    "morgan": "^1.10.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "webpack": "^4.43.0"
   },
   "devDependencies": {
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor"
