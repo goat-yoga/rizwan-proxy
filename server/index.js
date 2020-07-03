@@ -3,8 +3,9 @@ const bodyparser = require('body-parser');
 const morgan = require('morgan');
 const cors = require('cors');
 const path = require('path');
-const httpProxy = require('http-proxy');
 const proxyPort = 3000;
+
+const httpProxy = require('http-proxy');
 const NavBar = require('../Nav_Bar/server/index.js');
 const FullLook = require('../Full_Look/server/index.js');
 const ProductInfo = require('../Product_Info/server/index.js');
@@ -24,18 +25,16 @@ proxy.use(bodyparser.json());
 proxy.use(bodyparser.urlencoded({ extended: true }));
 proxy.use(morgan('dev'));
 
-// BRUH, HOW AM I EVEN RENDERING STUFF
-// navBarServer
 // proxy.all is like app.get/app.post.
-// Except it can handle all types of REST methods
+// Except it handles all types of REST methods
 
-proxy.use('http://localhost:3500', function (req, res) {
+proxy.all('http://localhost:3500', function (req, res) {
   console.log('redirecting to nav. bar server');
   apiProxy.web(req, res, { target: navBarServer });
 });
 
 // productServer
-proxy.use('http://localhost:3005', function (req, res) {
+proxy.all('http://localhost:3005', function (req, res) {
   console.log('redirecting to product detail server');
   apiProxy.web(req, res, { target: productServer });
 });
@@ -48,7 +47,7 @@ proxy.all('http://localhost:8080', function (req, res) {
 
 // reviewServer
 proxy.all('http://localhost:3001', function (req, res) {
-  console.log('redirecting to review');
+  console.log('redirecting to review server');
   apiProxy.web(req, res, { target: reviewServer });
 });
 
