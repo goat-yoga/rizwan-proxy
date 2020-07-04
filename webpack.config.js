@@ -19,7 +19,8 @@ module.exports = {
         test: /\.js$|jsx/,
         loader: 'babel-loader',
         query: {
-          presets: ['react', 'es2015']
+          presets: ['react', 'es2015'],
+          plugins: ["babel-plugin-transform-object-rest-spread"],
         },
         include: [
           path.join(__dirname, 'Nav_Bar', 'client', 'src'),
