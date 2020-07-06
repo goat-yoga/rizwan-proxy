@@ -3,6 +3,7 @@ const bodyparser = require('body-parser');
 const morgan = require('morgan');
 const cors = require('cors');
 const path = require('path');
+const http = require('http');
 const proxyPort = 3000;
 
 const httpProxy = require('http-proxy');
@@ -13,7 +14,7 @@ const Reviews = require('../Reviews/server/index.js');
 
 
 // create proxy server
-const apiProxy = httpProxy.createProxyServer();
+const apiProxy = httpProxy.createProxyServer({});
 // replace w/ actual url once othes have deployed
 const navBarServer = 'http://localhost:3500';
 const productServer = 'http://localhost:3005';
@@ -24,6 +25,7 @@ const proxy = express();
 proxy.use(bodyparser.json());
 proxy.use(bodyparser.urlencoded({ extended: true }));
 proxy.use(morgan('dev'));
+proxy.use(cors());
 
 // proxy.all is like app.get/app.post.
 // Except it handles all types of REST methods
