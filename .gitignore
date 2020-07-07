@@ -23,8 +23,3 @@ coverage
 # Compiled Dirs (http://nodejs.org/api/addons.html)
 build/
 dist/
-
-Nav_Bar/
-Full_Look/
-Product_Info/
-Reviews/
